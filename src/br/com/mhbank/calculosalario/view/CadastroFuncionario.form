@@ -50,11 +50,18 @@
                                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="inputQuantDepen" min="-2" pref="165" max="-2" attributes="0"/>
                               </Group>
+<<<<<<< HEAD
                               <Component id="listJornada" min="-2" pref="165" max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="inputVT" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
                           <Component id="btnNovoFuncionario" min="-2" max="-2" attributes="0"/>
+=======
+                              <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="listJornada" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+>>>>>>> 6d51c7d71d3059f23678590f79088121a9efd419
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -80,6 +87,7 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Component id="inputNome" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -117,6 +125,17 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+=======
+                  </Group>
+                  <Component id="inputQuantDepen" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+>>>>>>> 6d51c7d71d3059f23678590f79088121a9efd419
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
