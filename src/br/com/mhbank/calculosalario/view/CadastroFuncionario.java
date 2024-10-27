@@ -35,10 +35,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         listJornada = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        listVT = new javax.swing.JComboBox<>();
         btnNovoFuncionario = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFuncionarios = new javax.swing.JTable();
+        inputVT = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +89,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         jLabel9.setText("Jornada de Trabalho:");
 
-        listJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione","20", "30", "40", "50" }));
+        listJornada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione","180", "200", "220" }));
         listJornada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listJornadaActionPerformed(evt);
@@ -97,13 +97,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         });
 
         jLabel10.setText("VT");
-
-        listVT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Escolha","Sim", "Não" }));
-        listVT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listVTActionPerformed(evt);
-            }
-        });
 
         btnNovoFuncionario.setText("Adicionar Novo Funcionario");
         btnNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +162,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
                                 .addComponent(btnNovoFuncionario))
-                            .addComponent(listVT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputVT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -206,7 +199,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputHoraExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listVT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputVT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -234,31 +227,26 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_listJornadaActionPerformed
 
-    private void listVTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listVTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listVTActionPerformed
-
     private void btnNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoFuncionarioActionPerformed
 
         String nome = inputNome.getText();
         double salario = Double.parseDouble(inputSalario.getText());
         double bonus = Double.parseDouble(inputBonus.getText());
         double horasExtras = Double.parseDouble(inputHoraExtra.getText());
-        int dependentes = Integer.parseInt((inputQuantDepen.getText()));   
+        int dependentes = Integer.parseInt((inputQuantDepen.getText()));
+        
         int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
-        //boolean recebeVT = listVT.getSelectedItem(); 
-        
-        
-        Funcionario funcionario = new Funcionario();
+        double vt = Integer.parseInt(inputVT.getText());
 
+        Funcionario f = new Funcionario();
 
-//        funcionario.setNome(nome);
-//        funcionario.setSalario(salario);
-//        funcionario.setBonus(bonus);
-//        funcionario.setHorasExtras(horasExtras);
-//        funcionario.setQuantDependente(dependentes);
-//        funcionario.setJornadaTrabalho(jornadaTrabalho);
-//        funcionario.setRecebeVT(recebeVT); 
+        f.setNome(nome);
+        f.setSalario(salario);
+        f.setBonus(bonus);
+        f.setHorasExtras(horasExtras);
+        f.setQuantDependente(dependentes);
+        f.setJornadaTrabalho(jornadaTrabalho);
+        f.setTotalVT(vt);
 
     }//GEN-LAST:event_btnNovoFuncionarioActionPerformed
 
@@ -317,6 +305,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField inputNome;
     private javax.swing.JTextField inputQuantDepen;
     private javax.swing.JTextField inputSalario;
+    private javax.swing.JTextField inputVT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -328,7 +317,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> listJornada;
-    private javax.swing.JComboBox<String> listVT;
     private javax.swing.JTable tblFuncionarios;
     // End of variables declaration//GEN-END:variables
 }
