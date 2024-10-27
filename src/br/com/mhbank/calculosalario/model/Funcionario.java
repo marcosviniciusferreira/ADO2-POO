@@ -1,4 +1,6 @@
-package br.com.mhbank.calculosalrio.model;
+package br.com.mhbank.calculosalario.model;
+
+import java.util.Scanner;
 
 public class Funcionario {
     
@@ -7,6 +9,6 @@ public class Funcionario {
 			bonus;
     
     static public int quantDependente, jornadaTrabalho;
-    
-    
-}
+   
+                
+    }
