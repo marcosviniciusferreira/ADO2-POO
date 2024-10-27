@@ -11,8 +11,10 @@ import java.util.ArrayList;
 public class CadastroFuncionario extends javax.swing.JFrame {
 
     private ArrayList<Funcionario> listaFuncionarios;
+    DefaultTableModel tabelaFuncionario;
 
     public CadastroFuncionario() {
+        this.tabelaFuncionario = (DefaultTableModel) tblFuncionarios.getModel();
         initComponents();
     }
 
@@ -237,17 +239,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         
         int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
         double vt = Integer.parseInt(inputVT.getText());
+        
+        Funcionario funcionario = new Funcionario();
 
-        Funcionario f = new Funcionario();
-
-        f.setNome(nome);
-        f.setSalario(salario);
-        f.setBonus(bonus);
-        f.setHorasExtras(horasExtras);
-        f.setQuantDependente(dependentes);
-        f.setJornadaTrabalho(jornadaTrabalho);
-        f.setTotalVT(vt);
-
+        funcionario.setNome(nome);
+        funcionario.setSalario(salario);
+        funcionario.setBonus(bonus);
+        funcionario.setHorasExtras(horasExtras);
+        funcionario.setQuantDependente(dependentes);
+        funcionario.setJornadaTrabalho(jornadaTrabalho);
+        funcionario.setTotalVT(vt);
+        
+        listaFuncionarios.add(funcionario);
+        tabelaFuncionario.addRow(new Object[]{nome, salario, bonus, horasExtras, dependentes, jornadaTrabalho, vt});
     }//GEN-LAST:event_btnNovoFuncionarioActionPerformed
 
     private void tblFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFuncionariosMouseClicked
