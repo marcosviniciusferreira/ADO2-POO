@@ -265,25 +265,27 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
         double vt = Integer.parseInt(inputVT.getText());
 
-        Funcionario f = new Funcionario();
+        Funcionario funcionario = new Funcionario();
 
-        f.setNome(nome);
-        f.setSalario(salario);
-        f.setBonus(bonus);
-        f.setHorasExtras(horasExtras);
-        f.setQuantDependente(dependentes);
-        f.setJornadaTrabalho(jornadaTrabalho);
-        f.setTotalVT(vt);
+        funcionario.setNome(nome);
+        funcionario.setSalario(salario);
+        funcionario.setBonus(bonus);
+        funcionario.setHorasExtras(horasExtras);
+        funcionario.setQuantDependente(dependentes);
+        funcionario.setJornadaTrabalho(jornadaTrabalho);
+        funcionario.setTotalVT(vt);
+        
+        listaFuncionarios.add(funcionario);
         
         DefaultTableModel model = (DefaultTableModel) tblFuncionarios.getModel();
          
         model.addRow(new Object[]{
-        f.getNome(),
-        f.getSalario(),
-        f.getBonus(),
-        f.getHorasExtras(),
-        f.getQuantDependente(),
-        f.getJornadaTrabalho()
+        funcionario.getNome(),
+        funcionario.getSalario(),
+        funcionario.getBonus(),
+        funcionario.getHorasExtras(),
+        funcionario.getQuantDependente(),
+        funcionario.getJornadaTrabalho()
     });
         
         
