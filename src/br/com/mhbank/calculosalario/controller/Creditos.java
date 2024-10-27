@@ -13,8 +13,7 @@ public class Creditos {
         return horaExtra;
     }
 
-    public static double GanhosTotais(double salario, double bonusFuncionario, double horasExtras,
-            int jornadaTrabalho) {
+    public static double GanhosTotais(double salario, double bonusFuncionario, double horasExtras, int jornadaTrabalho) {
 
         horaExtra = Creditos.HoraExtra(salario, jornadaTrabalho, horasExtras);
 
