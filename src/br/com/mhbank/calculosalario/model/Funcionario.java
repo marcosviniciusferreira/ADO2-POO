@@ -41,7 +41,7 @@ public class Funcionario {
     
     
     public static double SalarioLiquido(){
-        double salario = Creditos.GanhosTotais(Creditos.getSalario(), Creditos.getBonus(), Creditos.getHorasExtras(), Creditos.getJornadaTrabalho())-Debitos.TotalDescontos(Debitos.getIRPF(), Debitos.getINSS(), Debitos.getVT(), Debitos.getVR(), Debitos.getConvenioMedico(), Debitos.getVA());
+        double salario = Creditos.GanhosTotais(Creditos.getHorasExtras(), Creditos.getSalario(), Creditos.getBonus(), Creditos.getJornadaTrabalho())-Debitos.TotalDescontos(Debitos.getIRPF(), Debitos.getINSS(), Debitos.getVT(), Debitos.getVR(), Debitos.getConvenioMedico(), Debitos.getVA());
         return salario;
     }
 }

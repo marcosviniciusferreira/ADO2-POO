@@ -340,7 +340,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         funcionario.setNome(nome);
         funcionario.getCreditos().setSalario(salario);
         funcionario.getCreditos().setBonus(bonus);
-        funcionario.getCreditos().setHorasExtras(Creditos.HoraExtra(salario, jornadaTrabalho, horasExtras));
+        funcionario.getCreditos().setHorasExtras(Creditos.CalculoHoraExtra(salario, jornadaTrabalho, horasExtras));
         funcionario.getDebitos().setIRPF(Debitos.DescontoIRPF(salario, dependentes));
         funcionario.getDebitos().setVT(Debitos.DescontoValeTransporte(salario, vt));
         funcionario.getDebitos().setVA(Debitos.DescontoValeAlimentacao(salario));

@@ -134,7 +134,7 @@ public class Debitos {
     }
     
     public static double TotalDescontos(double IRPF, double INSS, double VT, double VR, double convenioMedico, double VA){
-        double totalDescontos = IRPF+INSS+VT+VR+convenioMedico+VA;
+        double totalDescontos = IRPF + INSS + VT + VR + convenioMedico+ VA;
         return totalDescontos;
     }
 }

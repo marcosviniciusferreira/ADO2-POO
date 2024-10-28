@@ -40,7 +40,7 @@ public class Creditos extends Funcionario{
         Creditos.bonus = bonus;
     }
 
-    public static double HoraExtra(double salario, double jornadaTrabalho, double horasExtras) {
+    public static double CalculoHoraExtra(double salario, int jornadaTrabalho, double horasExtras) {
 
         double salarioHora = salario / jornadaTrabalho;
 
@@ -49,14 +49,9 @@ public class Creditos extends Funcionario{
         return horasExtras;
     }
 
-    public static double GanhosTotais(double salario, double bonusFuncionario, double horasExtras, int jornadaTrabalho) {
-
-        horasExtras = Creditos.HoraExtra(salario, jornadaTrabalho, horasExtras);
-
-        bonusFuncionario = bonusFuncionario;
-
-        salario = salario + horasExtras + bonusFuncionario;
-
-        return salario;
+    public static double GanhosTotais(double HoraExtra, double salario, double bonus, int jornadaTrabalho){
+        double valorHorasExtras = CalculoHoraExtra(salario, jornadaTrabalho, HoraExtra);
+        double GanhosTotais = HoraExtra+salario+bonus;
+        return GanhosTotais;
     }
 }
