@@ -9,9 +9,9 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class CadastroFuncionario extends javax.swing.JFrame {
-
-    private ArrayList<Funcionario> listaFuncionarios;
-
+    
+    private ArrayList<Funcionario> listaFuncionarios = new ArrayList();
+    
     public CadastroFuncionario() {
         initComponents();
     }
@@ -256,40 +256,45 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void btnNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoFuncionarioActionPerformed
 
+        Funcionario funcionario = new Funcionario();
+
         String nome = inputNome.getText();
         double salario = Double.parseDouble(inputSalario.getText());
         double bonus = Double.parseDouble(inputBonus.getText());
         double horasExtras = Double.parseDouble(inputHoraExtra.getText());
         int dependentes = Integer.parseInt((inputQuantDepen.getText()));
-        
         int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
-        double vt = Integer.parseInt(inputVT.getText());
-
-        Funcionario funcionario = new Funcionario();
+        double vt = Double.parseDouble(inputVT.getText());
 
         funcionario.setNome(nome);
-        funcionario.setSalario(salario);
-        funcionario.setBonus(bonus);
-        funcionario.setHorasExtras(horasExtras);
-        funcionario.setQuantDependente(dependentes);
-        funcionario.setJornadaTrabalho(jornadaTrabalho);
-        funcionario.setTotalVT(vt);
+        funcionario.getCreditos().setSalario(salario);
+        funcionario.getCreditos().setBonus(bonus);
+        funcionario.getCreditos().setHorasExtras(Creditos.HoraExtra(salario, jornadaTrabalho, horasExtras));
+        funcionario.getDebitos().setIRPF(Debitos.DescontoIRPF(salario, dependentes));
+        funcionario.getDebitos().setVT(Debitos.DescontoValeTransporte(salario, vt));
+        funcionario.getDebitos().setVA(Debitos.DescontoValeAlimentacao(salario));
+        funcionario.getDebitos().setConvenioMedico(Debitos.DescontoConvenioMedico(salario));
+        funcionario.getDebitos().setINSS(Debitos.DescontoINSS(salario));
+        funcionario.getDebitos().setVR(Debitos.DescontoValeRefeicao(salario));
         
         listaFuncionarios.add(funcionario);
-        
+
         DefaultTableModel model = (DefaultTableModel) tblFuncionarios.getModel();
-         
+
         model.addRow(new Object[]{
-        funcionario.getNome(),
-        funcionario.getSalario(),
-        funcionario.getBonus(),
-        funcionario.getHorasExtras(),
-        funcionario.getQuantDependente(),
-        funcionario.getJornadaTrabalho()
-    });
-        
-        
-       
+            funcionario.getNome(),
+            funcionario.getCreditos().getSalario(),
+            funcionario.getCreditos().getBonus(),
+            funcionario.getCreditos().getHorasExtras(),
+            funcionario.getDebitos().getIRPF(),
+            funcionario.getDebitos().getVT(),
+            funcionario.getDebitos().getVA(),
+            funcionario.getDebitos().getConvenioMedico(),
+            funcionario.getDebitos().getINSS(),
+            funcionario.getDebitos().getVR(),
+            funcionario.SalarioLiquido(),
+        });
+
 
     }//GEN-LAST:event_btnNovoFuncionarioActionPerformed
 

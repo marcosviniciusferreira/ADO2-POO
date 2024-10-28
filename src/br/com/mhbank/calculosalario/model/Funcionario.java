@@ -1,14 +1,16 @@
 package br.com.mhbank.calculosalario.model;
-
+import br.com.mhbank.calculosalario.controller.Creditos;
+import br.com.mhbank.calculosalario.controller.Debitos;
 import java.util.Scanner;
 
 public class Funcionario {
 
     static public String nome;
-    static public double salario, salarioTributavel, totalVT, totalVR, convenioMedico, totalVA, irpf, inss, horasExtras, bonus;
-    
 
-    static public int quantDependente, jornadaTrabalho;
+    public void Funcionario(){
+    this.setCreditos(new Creditos());
+    this.setDebitos(new Debitos());
+}
 
     public static String getNome() {
         return nome;
@@ -18,52 +20,28 @@ public class Funcionario {
         Funcionario.nome = nome;
     }
 
-    public static double getSalario() {
+    public Debitos getDebitos() {
+        return debitos;
+    }
+
+    public void setDebitos(Debitos debitos) {
+        this.debitos = debitos;
+    }
+
+    public Creditos getCreditos() {
+        return creditos;
+    }
+
+    public void setCreditos(Creditos creditos) {
+        this.creditos = creditos;
+    }
+    private Debitos debitos;
+    private Creditos creditos;
+    
+    
+    
+    public static double SalarioLiquido(){
+        double salario = Creditos.GanhosTotais(Creditos.getSalario(), Creditos.getBonus(), Creditos.getHorasExtras(), Creditos.getJornadaTrabalho())-Debitos.TotalDescontos(Debitos.getIRPF(), Debitos.getINSS(), Debitos.getVT(), Debitos.getVR(), Debitos.getConvenioMedico(), Debitos.getVA());
         return salario;
     }
-
-    public static void setSalario(double salario) {
-        Funcionario.salario = salario;
-    }
-
-    public static double getTotalVT() {
-        return totalVT;
-    }
-
-    public static void setTotalVT(double totalVT) {
-        Funcionario.totalVT = totalVT;
-    }
-
-    public static double getHorasExtras() {
-        return horasExtras;
-    }
-
-    public static void setHorasExtras(double horasExtras) {
-        Funcionario.horasExtras = horasExtras;
-    }
-
-    public static double getBonus() {
-        return bonus;
-    }
-
-    public static void setBonus(double bonus) {
-        Funcionario.bonus = bonus;
-    }
-
-    public static int getQuantDependente() {
-        return quantDependente;
-    }
-
-    public static void setQuantDependente(int quantDependente) {
-        Funcionario.quantDependente = quantDependente;
-    }
-
-    public static int getJornadaTrabalho() {
-        return jornadaTrabalho;
-    }
-
-    public static void setJornadaTrabalho(int jornadaTrabalho) {
-        Funcionario.jornadaTrabalho = jornadaTrabalho;
-    }
-
 }
