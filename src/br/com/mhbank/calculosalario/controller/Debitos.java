@@ -58,11 +58,11 @@ public class Debitos {
         return VT;
     }
 
-    public static double DescontoValeRefeicao(double salario, double totalVR) {
+    public static double DescontoValeRefeicao(double salario) {
         if (salario <= 1412) {
             VR = 0;
         } else {
-            VR = totalVR * 0.03;
+            VR = salario * 0.03;
         }
         return VR;
     }
@@ -76,12 +76,65 @@ public class Debitos {
         return convenioMedico;
     }
 
-    public static double DescontoValeAlimentacao(double salario, double totalVA) {
+    public static double getIRPF() {
+        return IRPF;
+    }
+
+    public static void setIRPF(double IRPF) {
+        Debitos.IRPF = IRPF;
+    }
+
+    public static double getINSS() {
+        return INSS;
+    }
+
+    public static void setINSS(double INSS) {
+        Debitos.INSS = INSS;
+    }
+
+    public static double getVT() {
+        return VT;
+    }
+
+    public static void setVT(double VT) {
+        Debitos.VT = VT;
+    }
+
+    public static double getVR() {
+        return VR;
+    }
+
+    public static void setVR(double VR) {
+        Debitos.VR = VR;
+    }
+
+    public static double getConvenioMedico() {
+        return convenioMedico;
+    }
+
+    public static void setConvenioMedico(double convenioMedico) {
+        Debitos.convenioMedico = convenioMedico;
+    }
+
+    public static double getVA() {
+        return VA;
+    }
+
+    public static void setVA(double VA) {
+        Debitos.VA = VA;
+    }
+
+    public static double DescontoValeAlimentacao(double salario) {
         if (salario <= 4.236) { // 3 salarios minimos
             VA = 0;
         } else {
-            VA = totalVA * 0.02;
+            VA = salario * 0.02;
         }
         return VA;
+    }
+    
+    public static double TotalDescontos(double IRPF, double INSS, double VT, double VR, double convenioMedico, double VA){
+        double totalDescontos = IRPF+INSS+VT+VR+convenioMedico+VA;
+        return totalDescontos;
     }
 }
