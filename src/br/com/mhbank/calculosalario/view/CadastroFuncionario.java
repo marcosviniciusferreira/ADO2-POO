@@ -1,5 +1,7 @@
 package br.com.mhbank.calculosalario.view;
 
+import br.com.mhbank.calculosalario.controller.Creditos;
+import br.com.mhbank.calculosalario.controller.Debitos;
 import br.com.mhbank.calculosalario.model.Funcionario;
 
 import javax.swing.JOptionPane;
@@ -332,15 +334,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         double bonus = Double.parseDouble(inputBonus.getText());
         double horasExtras = Double.parseDouble(inputHoraExtra.getText());
         int dependentes = Integer.parseInt((inputQuantDepen.getText()));
-<<<<<<< HEAD
-=======
-
->>>>>>> 24af291a7d865a0385ff2fdd9864f2187f455f7b
         int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
         double vt = Double.parseDouble(inputVT.getText());
 
         funcionario.setNome(nome);
-<<<<<<< HEAD
         funcionario.getCreditos().setSalario(salario);
         funcionario.getCreditos().setBonus(bonus);
         funcionario.getCreditos().setHorasExtras(Creditos.HoraExtra(salario, jornadaTrabalho, horasExtras));
@@ -350,23 +347,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         funcionario.getDebitos().setConvenioMedico(Debitos.DescontoConvenioMedico(salario));
         funcionario.getDebitos().setINSS(Debitos.DescontoINSS(salario));
         funcionario.getDebitos().setVR(Debitos.DescontoValeRefeicao(salario));
-        
-=======
-        funcionario.setSalario(salario);
-        funcionario.setBonus(bonus);
-        funcionario.setHorasExtras(horasExtras);
-        funcionario.setQuantDependente(dependentes);
-        funcionario.setJornadaTrabalho(jornadaTrabalho);
-        funcionario.setTotalVT(vt);
 
->>>>>>> 24af291a7d865a0385ff2fdd9864f2187f455f7b
         listaFuncionarios.add(funcionario);
 
         DefaultTableModel model = (DefaultTableModel) tblFuncionarios.getModel();
 
         model.addRow(new Object[]{
             funcionario.getNome(),
-<<<<<<< HEAD
             funcionario.getCreditos().getSalario(),
             funcionario.getCreditos().getBonus(),
             funcionario.getCreditos().getHorasExtras(),
@@ -377,13 +364,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             funcionario.getDebitos().getINSS(),
             funcionario.getDebitos().getVR(),
             funcionario.SalarioLiquido(),
-=======
-            funcionario.getSalario(),
-            funcionario.getBonus(),
-            funcionario.getHorasExtras(),
-            funcionario.getQuantDependente(),
-            funcionario.getJornadaTrabalho()
->>>>>>> 24af291a7d865a0385ff2fdd9864f2187f455f7b
         });
 
 
