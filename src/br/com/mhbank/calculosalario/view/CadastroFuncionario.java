@@ -7,11 +7,12 @@ import br.com.mhbank.calculosalario.model.Funcionario;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 public class CadastroFuncionario extends javax.swing.JFrame {
-    
+
     private ArrayList<Funcionario> listaFuncionarios = new ArrayList();
-    
+
     public CadastroFuncionario() {
         initComponents();
     }
@@ -23,7 +24,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         botaoMinimizar = new javax.swing.JLabel();
-        btnSair = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        btnSair1 = new javax.swing.JButton();
         inputNome = new javax.swing.JTextField();
         inputSalario = new javax.swing.JTextField();
         inputHoraExtra = new javax.swing.JTextField();
@@ -66,10 +68,17 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setText("Voltar");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnSair1.setText("SAIR");
+        btnSair1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSair1ActionPerformed(evt);
             }
         });
 
@@ -82,8 +91,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSair1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,14 +102,16 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botaoMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnSair)
-                                .addGap(33, 33, 33)))
+                        .addComponent(botaoMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnVoltar)
+                                    .addComponent(btnSair1))))
                         .addGap(29, 29, 29))))
         );
 
@@ -246,17 +259,15 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addComponent(inputVT, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1327, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1327, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -327,45 +338,70 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void btnNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoFuncionarioActionPerformed
 
-        Funcionario funcionario = new Funcionario();
-
         String nome = inputNome.getText();
-        double salario = Double.parseDouble(inputSalario.getText());
-        double bonus = Double.parseDouble(inputBonus.getText());
-        double horasExtras = Double.parseDouble(inputHoraExtra.getText());
-        int dependentes = Integer.parseInt((inputQuantDepen.getText()));
-        int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
-        double vt = Double.parseDouble(inputVT.getText());
 
-        funcionario.setNome(nome);
-        funcionario.getCreditos().setSalario(salario);
-        funcionario.getCreditos().setBonus(bonus);
-        funcionario.getCreditos().setHorasExtras(Creditos.CalculoHoraExtra(salario, jornadaTrabalho, horasExtras));
-        funcionario.getDebitos().setIRPF(Debitos.DescontoIRPF(salario, dependentes));
-        funcionario.getDebitos().setVT(Debitos.DescontoValeTransporte(salario, vt));
-        funcionario.getDebitos().setVA(Debitos.DescontoValeAlimentacao(salario));
-        funcionario.getDebitos().setConvenioMedico(Debitos.DescontoConvenioMedico(salario));
-        funcionario.getDebitos().setINSS(Debitos.DescontoINSS(salario));
-        funcionario.getDebitos().setVR(Debitos.DescontoValeRefeicao(salario));
+        if (nome.isEmpty() || inputSalario.getText().isEmpty() || inputBonus.getText().isEmpty()
+                || inputHoraExtra.getText().isEmpty() || inputQuantDepen.getText().isEmpty()
+                || listJornada.getSelectedItem() == null || inputVT.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        listaFuncionarios.add(funcionario);
+        try {
+            double salario = Double.parseDouble(inputSalario.getText());
+            double bonus = Double.parseDouble(inputBonus.getText());
+            double horasExtras = Double.parseDouble(inputHoraExtra.getText());
+            int dependentes = Integer.parseInt(inputQuantDepen.getText());
+            int jornadaTrabalho = Integer.parseInt(listJornada.getSelectedItem().toString());
+            double vt = Double.parseDouble(inputVT.getText());
 
-        DefaultTableModel model = (DefaultTableModel) tblFuncionarios.getModel();
 
-        model.addRow(new Object[]{
-            funcionario.getNome(),
-            funcionario.getCreditos().getSalario(),
-            funcionario.getCreditos().getBonus(),
-            funcionario.getCreditos().getHorasExtras(),
-            funcionario.getDebitos().getIRPF(),
-            funcionario.getDebitos().getVT(),
-            funcionario.getDebitos().getVA(),
-            funcionario.getDebitos().getConvenioMedico(),
-            funcionario.getDebitos().getINSS(),
-            funcionario.getDebitos().getVR(),
-            funcionario.SalarioLiquido(),
-        });
+            if (salario < 0 || bonus < 0 || horasExtras < 0 || dependentes < 0 || vt < 0) {
+                JOptionPane.showMessageDialog(null, "Os valores não podem ser negativos.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
+            DecimalFormat df = new DecimalFormat("0.00");
+
+            Funcionario funcionario = new Funcionario();
+            funcionario.setNome(nome);
+            funcionario.getCreditos().setSalario(salario);
+            funcionario.getCreditos().setBonus(bonus);
+            funcionario.getCreditos().setHorasExtras(Creditos.CalculoHoraExtra(salario, jornadaTrabalho, horasExtras));
+            funcionario.getDebitos().setIRPF(Debitos.DescontoIRPF(salario, dependentes));
+            funcionario.getDebitos().setVT(Debitos.DescontoValeTransporte(salario, vt));
+            funcionario.getDebitos().setVA(Debitos.DescontoValeAlimentacao(salario));
+            funcionario.getDebitos().setConvenioMedico(Debitos.DescontoConvenioMedico(salario));
+            funcionario.getDebitos().setINSS(Debitos.DescontoINSS(salario));
+            funcionario.getDebitos().setVR(Debitos.DescontoValeRefeicao(salario));
+
+            listaFuncionarios.add(funcionario);
+
+            DefaultTableModel model = (DefaultTableModel) tblFuncionarios.getModel();
+            model.addRow(new Object[]{
+                funcionario.getNome(),
+                df.format(funcionario.getCreditos().getSalario()),
+                df.format(funcionario.getCreditos().getBonus()),
+                df.format(funcionario.getCreditos().getHorasExtras()),
+                df.format(funcionario.getDebitos().getIRPF()),
+                df.format(funcionario.getDebitos().getVT()),
+                df.format(funcionario.getDebitos().getVA()),
+                df.format(funcionario.getDebitos().getConvenioMedico()),
+                df.format(funcionario.getDebitos().getINSS()),
+                df.format(funcionario.getDebitos().getVR()),
+                df.format(funcionario.SalarioLiquido()),});
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, insira valores numéricos válidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+        inputNome.setText("");
+        inputSalario.setText("");
+        inputBonus.setText("");
+        inputHoraExtra.setText("");
+        inputQuantDepen.setText("");
+        listJornada.setSelectedIndex(0);
+        inputVT.setText("");
 
     }//GEN-LAST:event_btnNovoFuncionarioActionPerformed
 
@@ -389,15 +425,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botaoMinimizarMouseClicked
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         Menu M = new Menu();
         M.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnSairActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void botaoMinimizar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoMinimizar1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoMinimizar1MouseClicked
+
+    private void btnSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSair1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSair1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,7 +486,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel botaoMinimizar;
     private javax.swing.JLabel botaoMinimizar1;
     private javax.swing.JButton btnNovoFuncionario;
-    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSair1;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField inputBonus;
     private javax.swing.JTextField inputHoraExtra;
     private javax.swing.JTextField inputNome;
